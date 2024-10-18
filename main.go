@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/DaffaFA/counter-server/api/routes"
-	"github.com/DaffaFA/counter-server/pkg/user"
-	"github.com/DaffaFA/counter-server/utils"
+	"github.com/DaffaFA/counter-user_access_control/api/routes"
+	"github.com/DaffaFA/counter-user_access_control/pkg/user"
+	"github.com/DaffaFA/counter-user_access_control/utils"
 	"github.com/bytedance/sonic"
 	"github.com/exaring/otelpgx"
 	"github.com/gofiber/contrib/otelfiber"

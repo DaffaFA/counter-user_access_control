@@ -3,8 +3,8 @@ package handlers
 import (
 	"fmt"
 
-	"github.com/DaffaFA/counter-server/pkg/user"
-	"github.com/DaffaFA/counter-server/utils"
+	"github.com/DaffaFA/counter-user_access_control/pkg/user"
+	"github.com/DaffaFA/counter-user_access_control/utils"
 	"github.com/bytedance/sonic"
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,4 +1,4 @@
-module github.com/DaffaFA/counter-server
+module github.com/DaffaFA/counter-user_access_control
 
 go 1.22.4
 

@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"github.com/DaffaFA/counter-server/api/handlers"
-	"github.com/DaffaFA/counter-server/pkg/user"
+	"github.com/DaffaFA/counter-user_access_control/api/handlers"
+	"github.com/DaffaFA/counter-user_access_control/pkg/user"
 	"github.com/gofiber/fiber/v2"
 )
 

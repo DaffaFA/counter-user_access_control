@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/DaffaFA/counter-server/pkg/entities"
-	"github.com/DaffaFA/counter-server/pkg/user"
-	"github.com/DaffaFA/counter-server/utils"
+	"github.com/DaffaFA/counter-user_access_control/pkg/entities"
+	"github.com/DaffaFA/counter-user_access_control/pkg/user"
+	"github.com/DaffaFA/counter-user_access_control/utils"
 	"github.com/gofiber/fiber/v2"
 )
 

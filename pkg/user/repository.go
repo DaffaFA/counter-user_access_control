@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/DaffaFA/counter-server/pkg/entities"
-	"github.com/DaffaFA/counter-server/utils"
+	"github.com/DaffaFA/counter-user_access_control/pkg/entities"
+	"github.com/DaffaFA/counter-user_access_control/utils"
 	"github.com/Masterminds/squirrel"
 	"github.com/bytedance/sonic"
 	"github.com/jackc/pgx/v5"

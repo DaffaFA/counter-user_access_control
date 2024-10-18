@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/DaffaFA/counter-server/pkg/entities"
-	"github.com/DaffaFA/counter-server/utils"
+	"github.com/DaffaFA/counter-user_access_control/pkg/entities"
+	"github.com/DaffaFA/counter-user_access_control/utils"
 )
 
 type Service interface {
