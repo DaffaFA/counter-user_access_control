@@ -3,7 +3,6 @@ package user
 import (
 	"context"
 	"errors"
-	"log"
 	"time"
 
 	"golang.org/x/crypto/bcrypt"
@@ -180,8 +179,6 @@ func (r *repository) Register(ctx context.Context, user *entities.User) error {
 		return err
 	}
 
-	log.Println(sqln)
-
 	if _, err = r.DB.Exec(ctx, sqln, in...); err != nil {
 		span.RecordError(err)
 		return err
@@ -206,15 +203,12 @@ func (r *repository) FetchUserSession(ctx context.Context, session string) (res 
 	ctx, span := utils.Tracer.Start(ctx, "user.repository.FetchUserSession")
 	defer span.End()
 
-	log.Println("session", session)
-
 	userString, err := r.Redis.Get(ctx, session).Result()
 	if err != nil {
 		span.RecordError(err)
 		return res, err
 	}
 
-	log.Println("userString", userString)
 	if err := sonic.UnmarshalString(userString, &res); err != nil {
 		span.RecordError(err)
 		return res, err

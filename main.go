@@ -106,7 +106,7 @@ func main() {
 		return c.SendString("Hello, World 👋!")
 	})
 
-	urlPrefix := app.Group("/api/v1")
+	urlPrefix := app.Group("/api/v1/auth")
 	routes.UserRouter(urlPrefix, userService)
 
 	app.Listen(fmt.Sprintf(":%s", viper.GetString("PORT")))

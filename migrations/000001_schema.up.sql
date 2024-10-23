@@ -16,18 +16,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DO
-$do$
-BEGIN
-   IF EXISTS (SELECT FROM pg_database WHERE datname = 'user_access_control_db') THEN
-      RAISE NOTICE 'Database already exists';  -- optional
-   ELSE
-      PERFORM dblink_exec('dbname=' || current_database()  -- current db
-                        , 'CREATE DATABASE user_access_control_db');
-   END IF;
-END
-$do$;
-
 --
 -- Name: user_access_control; Type: SCHEMA; Schema: -; Owner: COUNTER@2024
 --

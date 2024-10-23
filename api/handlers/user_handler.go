@@ -10,14 +10,21 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-const SESSION_KEY = "session"
+const SESSION_KEY = "x-m-session"
 
 func GetUser(service user.Service) fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		ctx, span := utils.Tracer.Start(c.UserContext(), fmt.Sprintf("%s %s", c.Method(), c.OriginalURL()))
 		defer span.End()
 
-		orders, err := service.GetUser(ctx, 1)
+		session := c.Cookies(SESSION_KEY, "-1")
+		if session == "-1" {
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+				"error": "Unauthorized",
+			})
+		}
+
+		user, err := service.FetchUserSession(ctx, session)
 		if err != nil {
 			span.RecordError(err)
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -25,7 +32,7 @@ func GetUser(service user.Service) fiber.Handler {
 			})
 		}
 
-		return c.JSON(orders)
+		return c.JSON(user)
 	}
 }
 
@@ -46,7 +53,7 @@ func SignIn(service user.Service) fiber.Handler {
 		session, userData, sessionExpired, err := service.SignIn(ctx, user)
 		if err != nil {
 			span.RecordError(err)
-			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 				"error": err.Error(),
 			})
 		}

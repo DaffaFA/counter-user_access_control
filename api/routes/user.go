@@ -10,7 +10,7 @@ func UserRouter(app fiber.Router, service user.Service) {
 	app.Get("/user", handlers.GetUser(service))
 	app.Post("/signin", handlers.SignIn(service))
 	app.Post("/register", handlers.Register(service))
-	app.Post("/logout", handlers.SignOut(service))
+	app.Post("/signout", handlers.SignOut(service))
 
 	app.Post("/_auth", handlers.AuthRequestHandler(service))
 }
